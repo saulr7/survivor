@@ -1,0 +1,243 @@
+[gd_scene load_steps=21 format=3 uid="uid://db5sxseihgdk2"]
+
+[ext_resource type="Script" path="res://scenes/ui/ability_upgrade_card.gd" id="1_rd36f"]
+[ext_resource type="PackedScene" uid="uid://dwxx0ki10mbwe" path="res://scenes/components/stream_player_component.tscn" id="2_bmf7l"]
+[ext_resource type="AudioStream" uid="uid://bi0blt3n5laml" path="res://assets/audio/switch1.ogg" id="3_awo5h"]
+[ext_resource type="AudioStream" uid="uid://6eiby8ffstxq" path="res://assets/audio/switch2.ogg" id="4_mwerf"]
+[ext_resource type="AudioStream" uid="uid://bstj5v4mj7nef" path="res://assets/audio/switch3.ogg" id="5_frwub"]
+[ext_resource type="AudioStream" uid="uid://d2suo8f5jluux" path="res://assets/audio/switch4.ogg" id="6_yrglr"]
+[ext_resource type="AudioStream" uid="uid://bsh2iey5ucxey" path="res://assets/audio/switch5.ogg" id="7_qgd78"]
+[ext_resource type="AudioStream" uid="uid://b7e3xnxssd50r" path="res://assets/audio/switch6.ogg" id="8_x7pmw"]
+[ext_resource type="AudioStream" uid="uid://cmvy3rhx1wxpo" path="res://assets/audio/switch7.ogg" id="9_tau33"]
+[ext_resource type="AudioStream" uid="uid://dtar4f5jp1hit" path="res://assets/audio/switch8.ogg" id="10_rau62"]
+[ext_resource type="AudioStream" uid="uid://7fjixl7c5dj1" path="res://assets/audio/switch9.ogg" id="11_2a5q6"]
+[ext_resource type="AudioStream" uid="uid://cujh8l47tjo3n" path="res://assets/audio/switch10.ogg" id="12_w111g"]
+
+[sub_resource type="Animation" id="Animation_hk8ka"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pygty"]
+resource_name = "discard"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_22nl2"]
+resource_name = "in"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xh5j6"]
+resource_name = "selected"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 3, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(2.08165e-12, 2.08165e-12)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClickPlayerComponent")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e3dly"]
+_data = {
+"RESET": SubResource("Animation_hk8ka"),
+"discard": SubResource("Animation_pygty"),
+"in": SubResource("Animation_22nl2"),
+"selected": SubResource("Animation_xh5j6")
+}
+
+[sub_resource type="Animation" id="Animation_vuup4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tqvsk"]
+resource_name = "hover"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0872665, 3.48787e-16]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HoverPlayerComponent")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t3mq5"]
+_data = {
+"RESET": SubResource("Animation_vuup4"),
+"hover": SubResource("Animation_tqvsk")
+}
+
+[node name="AbilityUpgradeCard" type="PanelContainer" groups=["upgrade_card"]]
+custom_minimum_size = Vector2(150, 150)
+offset_left = -3.0
+offset_right = 147.0
+offset_bottom = 150.0
+pivot_offset = Vector2(75, 75)
+script = ExtResource("1_rd36f")
+
+[node name="HoverPlayerComponent" parent="." instance=ExtResource("2_bmf7l")]
+volume_db = -8.0
+streams = Array[AudioStream]([ExtResource("3_awo5h"), ExtResource("4_mwerf"), ExtResource("5_frwub"), ExtResource("6_yrglr"), ExtResource("7_qgd78"), ExtResource("8_x7pmw"), ExtResource("9_tau33"), ExtResource("10_rau62"), ExtResource("11_2a5q6"), ExtResource("12_w111g")])
+
+[node name="ClickPlayerComponent" parent="." instance=ExtResource("2_bmf7l")]
+streams = Array[AudioStream]([ExtResource("3_awo5h"), ExtResource("4_mwerf"), ExtResource("5_frwub"), ExtResource("6_yrglr"), ExtResource("7_qgd78"), ExtResource("8_x7pmw"), ExtResource("9_tau33"), ExtResource("10_rau62"), ExtResource("11_2a5q6"), ExtResource("12_w111g")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e3dly")
+}
+
+[node name="HoverAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t3mq5")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"AlternatePanelContainer"
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
+theme_override_colors/font_outline_color = Color(0.137255, 0.14902, 0.231373, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "Test name"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"BlueOutlineLabel"
+theme_override_colors/font_shadow_color = Color(0.137255, 0.14902, 0.231373, 1)
+theme_override_colors/font_outline_color = Color(0.137255, 0.14902, 0.231373, 1)
+theme_override_constants/outline_size = 2
+text = "Some description here"
+autowrap_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
